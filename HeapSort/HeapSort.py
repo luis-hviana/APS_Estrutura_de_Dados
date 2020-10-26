@@ -1,3 +1,4 @@
+import time
 def heapSort(vetor):
     tamanho = len(vetor)
 
@@ -25,11 +26,23 @@ def heap(vetor, n, i):
         heap(vetor, n, largest)
 
 if __name__ == '__main__':
+    inicioAQ = time.time()
     vetor = []
-    with open('1000_numbers.txt', 'r') as arquivo:
+    with open('10000_numbers.txt', 'r') as arquivo:
         for valor in arquivo:
             vetor.append(int(valor))
     arquivo.close()
-    print("Vetor antes", vetor)
+    fimAQ = time.time()
+
+    inicio = time.time()
     heapSort(vetor)
-    print("Vetor depois",vetor)
+    fim = time.time()
+
+    tempoDeAquisicao = fimAQ - inicioAQ
+    tempoDeOrdenacao = fim - inicio
+    print("Tempo total: ", tempoDeAquisicao + tempoDeOrdenacao)
+    print("Tempo de aquisição: ", tempoDeAquisicao)
+    print("Tempo de ordenação: ", tempoDeOrdenacao)
+
+
+

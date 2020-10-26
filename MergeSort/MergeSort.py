@@ -1,3 +1,4 @@
+import time
 def mergeSort(vetor):
     if len(vetor)>1:
         mid = len(vetor)//2
@@ -31,11 +32,20 @@ def mergeSort(vetor):
             k=k+1
 
 if __name__ == '__main__':
+    inicioAQ = time.time()
     vetor = []
     with open('10000_numbers.txt', 'r') as arquivo:
         for valor in arquivo:
             vetor.append(int(valor))
     arquivo.close()
-    print("Vetor antes", vetor)
+    fimAQ = time.time()
+
+    inicio = time.time()
     mergeSort(vetor)
-    print("Vetor depois", vetor)
+    fim = time.time()
+
+    tempoDeAquisicao = fimAQ - inicioAQ
+    tempoDeOrdenacao = fim - inicio
+    print("Tempo total: ", tempoDeAquisicao + tempoDeOrdenacao)
+    print("Tempo de aquisição: ", tempoDeAquisicao)
+    print("Tempo de ordenação: ", tempoDeOrdenacao)

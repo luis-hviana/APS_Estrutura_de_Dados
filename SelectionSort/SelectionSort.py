@@ -1,3 +1,4 @@
+import time
 def SelectionSort(vetor):
 
     for index in range(0, len(vetor)):
@@ -10,11 +11,20 @@ def SelectionSort(vetor):
         vetor[index], vetor[min_index] = vetor[min_index], vetor[index]
 
 if __name__ == '__main__':
+    inicioAQ = time.time()
     vetor = []
-    with open('1000_numbers.txt', 'r') as arquivo:
+    with open('10000_numbers.txt', 'r') as arquivo:
         for valor in arquivo:
             vetor.append(int(valor))
     arquivo.close()
-    print("Vetor antes", vetor)
+    fimAQ = time.time()
+
+    inicio = time.time()
     SelectionSort(vetor)
-    print("Vetor depois", vetor)
+    fim = time.time()
+
+    tempoDeAquisicao = fimAQ - inicioAQ
+    tempoDeOrdenacao = fim - inicio
+    print("Tempo total: ", tempoDeAquisicao + tempoDeOrdenacao)
+    print("Tempo de aquisição: ", tempoDeAquisicao)
+    print("Tempo de ordenação: ", tempoDeOrdenacao)
